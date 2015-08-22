@@ -1,0 +1,262 @@
+/* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 100%;
+  font-family: "Roboto", sans-serif;
+  color: #3d3536;
+  background-color: white;
+}
+
+body, html {
+  /* important */
+  height: 100%;
+}
+
+a {
+  color: #222;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+a:hover {
+  color: #1177b7;
+}
+
+video { 
+  display: block; 
+}
+
+/* ==========================================================================
+   1. Icons - Sets up the icon font and respective classes
+   ========================================================================== */
+
+/* Import the font file with the icons in it */
+@font-face {
+    font-family: "sol-icons";
+    src:url("../fonts/sol-icons.eot?v=1");
+    src:url("../fonts/sol-icons.eot?v=1#iefix") format("embedded-opentype"),
+        url("../fonts/sol-icons.woff?v=1") format("woff"),
+        url("../fonts/sol-icons.ttf?v=1") format("truetype"),
+        url("../fonts/sol-icons.svg?v=1#icons") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply these base styles to all icons */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: "sol-icons", "Open Sans", sans-serif;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    text-decoration: none !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Each icon is created by inserting the correct character into the
+   content of the :before pseudo element. Like a boss. */
+.icon-ghost:before {
+    content: "\f600";
+}
+.icon-feed:before {
+    content: "\f601";
+}
+.icon-twitter:before {
+    content: "\f602";
+    font-size: 1.1em;
+}
+.icon-google-plus:before {
+    content: "\f603";
+}
+.icon-facebook:before {
+    content: "\f604";
+}
+.icon-arrow-left:before {
+    content: "\f605";
+}
+.icon-stats:before {
+    content: "\f606";
+}
+.icon-location:before {
+    content: "\f607";
+    margin-left: -3px; /* Tracking fix */
+}
+.icon-link:before {
+    content: "\f608";
+}
+.icon-menu:before {
+    content: "\f609";
+}
+/*
+    IMPORTANT: When making any changes to the icon font, be sure to increment
+    the version number by 1 in the @font-face rule. `?v=1` becomes `?v=2`
+    This forces browsers to download the new font file.
+*/
+
+/* -------------------------------- 
+
+Modules - reusable parts of our design
+
+-------------------------------- */
+video#bgvid {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url("/content/themes/sol/assets/img/himalayas.png") no-repeat;
+  background-size: cover;
+}
+
+@media only screen and (max-device-width: 800px) {
+  body { 
+    background: url("/content/themes/sol/assets/img/himalayas.png") #000 no-repeat center center fixed; 
+  }
+
+  #bgvid { 
+    display: none; 
+  }
+}
+
+/* -------------------------------- 
+
+Main components 
+
+-------------------------------- */
+
+h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: .3rem;
+}
+
+.nav {
+  -webkit-transition: -webkit-transform 0.5s ease,
+                        opacity 0.3s ease 0.7s;
+            transition: transform 0.5s ease,
+                        opacity 0.3s ease 0.7s;
+}
+
+body.nav-closed .nav {
+  -webkit-transform: translate3D(-97px, 0, 0);
+      -ms-transform: translate3D(-97px, 0, 0);
+          transform: translate3D(-97px, 0, 0);
+}
+
+body.nav-opened .nav {
+  opacity: 1;
+  -webkit-transition: -webkit-transform 0.3s ease,
+                      opacity 0s ease 0s;
+          transition: transform 0.3s ease,
+                      opacity 0s ease 0s;
+  -webkit-transform: translate3D(0, 0, 0);
+      -ms-transform: translate3D(0, 0, 0);
+          transform: translate3D(0, 0, 0);
+}
+
+body.nav-opened .nav ul {
+  visibility: visible;
+}
+
+body.nav-closed .nav ul {
+  visibility: hidden;
+}
+
+body.nav-opened .nav {
+  position: fixed;
+  left: 500px;
+  background: rgba(255, 255, 255, .3);
+  border: 1px solid #a2a2a2;
+  padding: 1rem;
+  padding-right: 40px;
+}
+
+body.nav-closed .nav {
+  position: fixed;
+  width: 40px;
+  height: 34px;
+  left:597px;
+  background: rgba(255, 255, 255, .3);
+  border: 1px solid #a2a2a2;
+  padding: 1rem;
+}
+
+body.nav-opened .nav-close.icon-menu {
+  position: fixed;
+  cursor: pointer;
+  padding: .3rem;
+  margin-top: 4px;
+  left: 683px;
+  z-index: 3;
+}
+
+body.nav-closed .nav-close.icon-menu {
+  position: fixed;
+  cursor: pointer;
+  padding: .3rem;
+  margin-top: 4px;
+  left: 508px;
+  z-index: 3;
+}
+
+.icon-menu:before {
+  content: "\f609";
+}
+
+#blog-logo img {
+  position: relative;
+  display: block;
+  height: 38px;
+  width: auto;;
+  margin: 2rem;
+}
+
+.content {
+  position: relative;
+  width: 469px;
+  margin: 2rem;
+  padding: 2rem;
+  background: rgba(255,255,255,.3);
+  border: 1px solid #a2a2a2;
+  color: #222;
+  font-size: 1.2rem;
+}
+
+.site-footer {
+  position: relative;
+  margin: 2rem;
+}
+
+.copyright {
+  position: absolute;
+  display: block;
+  float: left;
+}
+
+.poweredby {
+  position: absolute;
+  display: block;
+  margin-top: 1.5rem;
+}

@@ -1,0 +1,33 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+
+{{! The big featured header }}
+<header class="main-header">
+    <div id="blog-logo">
+        {{#if @blog.logo}}
+            <a href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="{{@blog.title}}" /></a>
+        {{else}}
+            <a href="{{@blog.url}}"><img src="{{asset "img/cd-logo.png"}}" alt="{{@blog.title}}" /></a>
+        {{/if}}
+    </div>
+    {{#if @blog.navigation}}
+        {{navigation}}
+    {{/if}}
+</header>
+
+{{! The main content area on the homepage }}
+<main id="content" class="content" role="main">
+    <video autoplay loop poster="{{asset "img/himalayas.png"}}" id="bgvid">
+        <source src="{{asset "media/himalayas.webm"}}" type="video/webm">
+        <source src="{{asset "media/himalayas.mp4"}}" type="video/mp4">
+    </video>
+
+    <!--[if lt IE 9]>
+        <script>
+            document.createElement('video');
+        </script>
+    <![endif]-->
+    
+    {{! The tag below includes the post loop - partials/loop.hbs }}
+    {{> "loop"}}
+</main>

@@ -1,0 +1,38 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+
+{{! The big featured header }}
+<header class="main-header">
+    <div id="blog-logo">
+        {{#if @blog.logo}}
+            <a href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="{{@blog.title}}" /></a>
+        {{else}}
+            <a href="{{@blog.url}}"><img src="{{asset "img/cd-logo.png"}}" alt="{{@blog.title}}" /></a>
+        {{/if}}
+    </div>
+    {{#if @blog.navigation}}
+        {{navigation}}
+    {{/if}}
+</header>
+
+{{! The main content area on the homepage }}
+<main class="main-content">
+    <video autoplay loop poster="{{asset "img/himalayas.png"}}" id="bgvid">
+        <source src="{{asset "media/himalayas.webm"}}" type="video/webm">
+        <source src="{{asset "media/himalayas.mp4"}}" type="video/mp4">
+    </video>
+
+    <!--[if lt IE 9]>
+        <script>
+            document.createElement('video');
+        </script>
+    <![endif]-->
+
+    <div class="content">
+        <h1>{{@blog.title}}</h1>
+        <br />
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in imperdiet diam. Nulla aliquet quam sit amet malesuada hendrerit. Mauris et purus nec massa consequat porttitor. Ut euismod sem vel urna laoreet porta. Quisque sodales purus bibendum quam ullamcorper, sit amet laoreet metus elementum. Duis quis bibendum mauris. Etiam et nibh quis tellus auctor auctor. Fusce in enim nec lorem euismod auctor et at orci.</p>
+        <br />
+        <p>Etiam non eros blandit, pellentesque felis a, venenatis nisi. Sed eget maximus leo. Nam congue massa sit amet lectus tristique finibus. Sed blandit fringilla elit, sit amet posuere tortor sollicitudin eget. Mauris scelerisque, augue sit amet dapibus tristique, nisi ipsum pretium ligula, quis finibus purus elit ut lectus. Aliquam tortor mi, tincidunt nec turpis ut, malesuada ultricies augue. Aliquam eu odio nisl. Suspendisse potenti. Quisque vel accumsan turpis. Phasellus eu nunc eleifend, ornare libero vitae, molestie ex. Aenean id risus vitae diam dictum posuere. Nunc ut condimentum elit, eget convallis mauris. Nullam eu vehicula mauris, id lacinia felis. Nunc feugiat lacus sed nisi molestie tincidunt. Integer at sollicitudin mi, ac lobortis tortor. Sed ut tempus nunc.</p>
+    </div>
+</main>
